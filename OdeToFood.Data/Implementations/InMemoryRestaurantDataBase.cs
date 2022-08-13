@@ -1,5 +1,8 @@
-﻿using System;
+﻿using OdeToFood.Core;
+using OdeToFood.Data.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace OdeToFood.Data.Implementations
@@ -59,7 +62,7 @@ namespace OdeToFood.Data.Implementations
             if (restaurant != null)
             {
                 rest.Name = restaurant.Name;
-                rest.Location = restaurant.Name;
+                rest.Location = restaurant.Location;
                 rest.Cuisine = restaurant.Cuisine;
             }
 
