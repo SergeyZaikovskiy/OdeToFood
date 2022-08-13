@@ -2,3 +2,20 @@
 @model OdeToFood.Pages.Restaurants.DetailModel
 @{
 }
+
+<h2>@Model.Restaurant.Name</h2>
+<br />
+<div>Id: @Model.Restaurant.Id</div>
+<br />
+<div>Name: @Model.Restaurant.Name</div>
+<br />
+<div>Location: @Model.Restaurant.Location</div>
+<br />
+<div>Cuisine: @Model.Restaurant.Cuisine</div>
+<br />
+@if(Model.Message!= null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+<br />
+<a class="btn btn-info" asp-area="" asp-page="./List">All restaurants</a>
