@@ -32,7 +32,7 @@ namespace OdeToFood.Pages.Restaurants
 
             if (restaurantId.HasValue)
             {
-                Restaurant = restaurantData.GetRestaurantById(restaurantId.Value);
+                Restaurant = restaurantData.GetById(restaurantId.Value);
             }
             else
             {
@@ -57,11 +57,11 @@ namespace OdeToFood.Pages.Restaurants
 
             if (Restaurant.Id > 0)
             {
-                restaurantData.UpdateRestaurantInfo(Restaurant);
+                restaurantData.Update(Restaurant);
             }
             else
             {
-                Restaurant = restaurantData.AddRestaurant(Restaurant);
+                Restaurant = restaurantData.Add(Restaurant);
             }
 
             restaurantData.Commit();
