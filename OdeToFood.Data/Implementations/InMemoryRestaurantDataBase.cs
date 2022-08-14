@@ -1,5 +1,8 @@
-﻿using System;
+﻿using OdeToFood.Core;
+using OdeToFood.Data.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace OdeToFood.Data.Implementations
@@ -8,7 +11,6 @@ namespace OdeToFood.Data.Implementations
     {
         List<Restaurant> restaurants;
 
-        // Restaurant restaurant;
         public InMemoryRestaurantData()
         {
             restaurants = new List<Restaurant>()
@@ -30,7 +32,7 @@ namespace OdeToFood.Data.Implementations
             return restaurants.OrderBy(restaurant => restaurant.Name);
         }
 
-        public Restaurant GetRestaurantById(int id)
+        public Restaurant GetById(int id)
         {
             return restaurants.SingleOrDefault(r => r.Id == id);
         }
@@ -43,7 +45,7 @@ namespace OdeToFood.Data.Implementations
                    select r;
         }
 
-        public Restaurant AddRestaurant(Restaurant newRestaurant)
+        public Restaurant Add(Restaurant newRestaurant)
         {
             restaurants.Add(newRestaurant);
 
@@ -52,18 +54,30 @@ namespace OdeToFood.Data.Implementations
             return newRestaurant;
         }
 
-        public Restaurant UpdateRestaurantInfo(Restaurant restaurant)
+        public Restaurant Update(Restaurant restaurant)
         {
             var rest = restaurants.SingleOrDefault(r => r.Id == restaurant.Id);
 
             if (restaurant != null)
             {
                 rest.Name = restaurant.Name;
-                rest.Location = restaurant.Name;
+                rest.Location = restaurant.Location;
                 rest.Cuisine = restaurant.Cuisine;
             }
 
             return rest;
+        }
+
+        public Restaurant Delete(int id)
+        {
+            var restaurant = restaurants.FirstOrDefault(r => r.Id == id);
+
+            if (restaurant != null)
+            {
+                restaurants.Remove(restaurant);
+            }
+
+            return restaurant;
         }
     }
 }

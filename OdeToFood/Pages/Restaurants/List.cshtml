@@ -2,3 +2,41 @@
 @model OdeToFood.Pages.Restaurants.ListModel
 @{
 }
+<h1>Restaurants</h1>
+<form method="get">
+    <div class="form-group">
+        <div class="input-group mb-3">          
+          <input type="search" class="form-control" asp-for="SearchTerm">
+          <div class="input-group-append">
+            <button class="btn btn-outline-info">
+                <img src="~/lib/bootstrap/dist/icons/search.svg">
+            </button>
+          </div>
+        </div>
+    </div>
+</form>
+
+<table class="table">    
+    @foreach(var restaurant in Model.Restaurants)
+    {
+       <tr>
+           <td>@restaurant.Name</td>          
+           <td>@restaurant.Cuisine</td>           
+           <td> 
+                <a class="btn btn-outline-info" asp-route-restaurantId="@restaurant.Id" asp-page="./Detail">
+                    <img src="~/lib/bootstrap/dist/icons/zoom-in.svg">
+                </a>
+           </td>
+           <td> 
+                <a class="btn btn-outline-info" asp-route-restaurantId="@restaurant.Id" asp-page="./Edit">
+                    <img src="~/lib/bootstrap/dist/icons/edit.svg">
+                </a>
+           </td>
+        </tr>         
+    }
+</table>
+
+
+<a class="btn btn-primary"  asp-page="./Edit">Add new</a>
+
+
