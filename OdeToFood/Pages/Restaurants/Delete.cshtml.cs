@@ -38,7 +38,6 @@ namespace OdeToFood.Pages.Restaurants
             }
 
             TempData["Message"] = $"Restaurant {restaurant.Name} removed!";
-
             return RedirectToPage("./List");
         }
     }

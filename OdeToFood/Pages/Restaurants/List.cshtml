@@ -24,6 +24,12 @@
        <partial name="_Summary" model="restaurant"/>       
        <br />
     }
+
+    @if(Model.Message != null)
+    {
+        <div class="alert alert-info">@Model.Message</div>
+    }
+
     <a class="btn btn-primary"  asp-page="./Edit">Add new</a>
 </div>
 
