@@ -31,7 +31,7 @@ namespace OdeToFood.Pages.Restaurants
 
         public void OnGet()
         {
-            logger.LogInformation("On Get from List model");
+            logger.LogWarning("On Get from List model");
 
             // Message = "Hello World!";
             Message = config["Message"];
