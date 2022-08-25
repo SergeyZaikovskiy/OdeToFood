@@ -41,7 +41,7 @@ namespace OdeToFood.Data.Implementations
             return restaurant;
         }
 
-        public IEnumerable<Restaurant> GetAll()
+        public IQueryable<Restaurant> GetAll()
         {
             return db.Restaurants.Select(r => r).OrderBy(r => r.Name); 
         }
@@ -56,7 +56,7 @@ namespace OdeToFood.Data.Implementations
            return db.Restaurants.Count();
         }
 
-        public IEnumerable<Restaurant> GetRestaurantByName(string name)
+        public IQueryable<Restaurant> GetRestaurantByName(string name)
         {
             return db.Restaurants
                 .Where(r => r.Name.StartsWith(name) || string.IsNullOrEmpty(name))
