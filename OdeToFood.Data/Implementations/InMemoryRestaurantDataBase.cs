@@ -1,9 +1,7 @@
 ﻿using OdeToFood.Core;
 using OdeToFood.Data.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace OdeToFood.Data.Implementations
 {
@@ -27,9 +25,9 @@ namespace OdeToFood.Data.Implementations
             return 0;
         }
 
-        public IEnumerable<Restaurant> GetAll()
+        public IQueryable<Restaurant> GetAll()
         {
-            return restaurants.OrderBy(restaurant => restaurant.Name);
+            return restaurants.OrderBy(restaurant => restaurant.Name).AsQueryable();
         }
 
         public Restaurant GetById(int id)
@@ -37,9 +35,9 @@ namespace OdeToFood.Data.Implementations
             return restaurants.SingleOrDefault(r => r.Id == id);
         }
 
-        public IEnumerable<Restaurant> GetRestaurantByName(string name)
+        public IQueryable<Restaurant> GetRestaurantByName(string name)
         {
-            return from r in restaurants
+            return from r in restaurants.AsQueryable()
                    where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)
                    orderby r.Name
                    select r;
